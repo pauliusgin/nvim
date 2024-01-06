@@ -20,7 +20,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 --------------------------------------------------------------
 
--- transparent background?
+-- colorscheme
+vim.cmd("colorscheme codedark")
 vim.api.nvim_set_hl(0, "Normal", { bg = none })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = none })
-
