@@ -20,6 +20,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 --------------------------------------------------------------
 
+-- require'lspconfig'.lua_ls.setup{}
+
 -- colorscheme
 vim.cmd("colorscheme codedark")
 vim.api.nvim_set_hl(0, "Normal", { bg = none })
