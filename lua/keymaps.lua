@@ -5,13 +5,29 @@ vim.g.maplocalleader = " "
 -- file explorer
 vim.keymap.set("n", "<leader>e", ":Lex 30<cr>", { noremap = true, silent = true } )
 
+--move highlighted text
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- keep the copy register while pasting
+vim.keymap.set("x", "<leader>p", "\"_dP")
+
+-- cursor stays in place when joining lines
+vim.keymap.set("n", "J", "mzJ`z")
+
+-- disable arrow keys
+vim.keymap.set("n", "<Up>", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set("n", "<Down>", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set("n", "<Left>", "<Nop>", { noremap = true, silent = true })
+vim.keymap.set("n", "<Right>", "<Nop>", { noremap = true, silent = true })
+
 -- dealing with word wrap
 vim.keymap.set("n", "k", 'v:count == 0 ? "gk" : "k"', { expr = true, silent = true })
 vim.keymap.set("n", "j", 'v:count == 0 ? "gj" : "j"', { expr = true, silent = true })
 
 -- split window
-vim.keymap.set("n", "<leader>sp", ":split<CR>", { noremap = true, silent = true, desc = "[SP]lit horizontally" })
-vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { noremap = true, silent = true, desc = "[S]plit [V]ertically" })
+vim.keymap.set("n", "<leader>sp", ":split<CR>", { noremap = true, silent = true, desc = "Split horizontally - " })
+vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { noremap = true, silent = true, desc = "Split vertically | " })
 
 -- split window resize
 vim.keymap.set(
@@ -35,5 +51,14 @@ vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true, silent = true })
 
+-- stay in place while searching
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
 
---------- HARPOON ----------------
+-- remove highlights after search
+vim.keymap.set("n", "<leader>nh", ":noh<CR>", { noremap = true, silent = true })
+
+-- vertical motions
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
+

@@ -10,6 +10,8 @@ return {
                 local opts = { buffer = bufnr }
                 vim.keymap.set("n", "<leader>f", ":lua vim.lsp.buf.format({ async = true })<cr>", opts)
                 vim.keymap.set("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<cr>", opts)
+                vim.keymap.set("n", "<leader>df", vim.diagnostic.open_float,
+                    { desc = "Open floating diagnostic message" })
             end)
 
             lsp_zero.extend_lspconfig()
