@@ -2,15 +2,21 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Ctrl-s to save
+vim.keymap.set("n", "<C-s>", ":w<cr>", { noremap = true, silent = true })
+
+-- Ctrl-q to  quit
+vim.keymap.set("n", "<C-q>", ":q<cr>", { noremap = true, silent = true })
+
 -- file explorer
-vim.keymap.set("n", "<leader>e", ":Lex 30<cr>", { noremap = true, silent = true } )
+vim.keymap.set("n", "<leader>e", ":Neotree toggle<cr>", { noremap = true, silent = true })
 
 --move highlighted text
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- keep the copy register while pasting
-vim.keymap.set("x", "<leader>p", "\"_dP")
+vim.keymap.set("x", "<leader>p", '"_dP')
 
 -- cursor stays in place when joining lines
 vim.keymap.set("n", "J", "mzJ`z")
@@ -31,19 +37,29 @@ vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { noremap = true, silent = true
 
 -- split window resize
 vim.keymap.set(
-  "n",
-  "<leader><Right>",
-  ":vertical resize +5<CR>",
-  { noremap = true, silent = true, desc = "Increase window width" }
+    "n",
+    "<leader><Right>",
+    ":vertical resize +5<CR>",
+    { noremap = true, silent = true, desc = "Increase window width" }
 )
 vim.keymap.set(
-  "n",
-  "<leader><Left>",
-  ":vertical resize -5<CR>",
-  { noremap = true, silent = true, desc = "Decrease window width" }
+    "n",
+    "<leader><Left>",
+    ":vertical resize -5<CR>",
+    { noremap = true, silent = true, desc = "Decrease window width" }
 )
-vim.keymap.set("n", "<leader><Up>", ":resize +5<CR>", { noremap = true, silent = true, desc = "Increase window height" })
-vim.keymap.set("n", "<leader><Down>", ":resize -5<CR>", { noremap = true, silent = true, desc = "Decrease window height" })
+vim.keymap.set(
+    "n",
+    "<leader><Up>",
+    ":resize +5<CR>",
+    { noremap = true, silent = true, desc = "Increase window height" }
+)
+vim.keymap.set(
+    "n",
+    "<leader><Down>",
+    ":resize -5<CR>",
+    { noremap = true, silent = true, desc = "Decrease window height" }
+)
 
 -- split window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { noremap = true, silent = true })
@@ -61,4 +77,3 @@ vim.keymap.set("n", "<leader>nh", ":noh<CR>", { noremap = true, silent = true })
 -- vertical motions
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true, silent = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true, silent = true })
-
