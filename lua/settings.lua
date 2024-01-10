@@ -3,7 +3,7 @@ vim.g.netrw_banner = 0
 
 -- line numbers
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.numberwidth = 2
 
 -- sync clipboard between OS and NeoVim
@@ -22,10 +22,10 @@ vim.opt.splitright = true
 -- scroll margins
 vim.opt.scrolloff = 8
 
--- popup menu (such as completion) height in lines
+-- pop up menu (such as completion) height in lines
 vim.opt.pumheight = 10
 
--- highligh on search
+-- highlight on search
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
@@ -44,14 +44,14 @@ vim.opt.breakindent = true
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
-vim.opt.undodir = vim.fn.stdpath('config') .. '/undo'
+vim.opt.undodir = vim.fn.stdpath("config") .. "/undo"
 
 -- case-insensitive searching UNLESS \C or capital in search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- keep signcolumn on by default
- vim.opt.signcolumn = "yes"
+-- keep sign column on by default
+vim.opt.signcolumn = "yes"
 
 -- if terminal supports this
 vim.opt.termguicolors = true
@@ -59,9 +59,12 @@ vim.opt.termguicolors = true
 -- highlight on yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = "*",
 })
+
+-- spell-check
+vim.cmd("set spell spelllang=en_us,lt")

@@ -21,7 +21,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 --------------------------------------------------------------
 
--- colorscheme
+-- color scheme
 vim.cmd("colorscheme codedark")
 vim.api.nvim_set_hl(0, "Normal", { bg = none })
 vim.api.nvim_set_hl(0, "NormalFlat", { bg = none })
