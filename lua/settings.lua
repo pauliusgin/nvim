@@ -3,7 +3,7 @@ vim.g.netrw_banner = 0
 
 -- line numbers
 vim.opt.number = true
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 vim.opt.numberwidth = 2
 
 -- sync clipboard between OS and NeoVim

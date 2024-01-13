@@ -15,7 +15,20 @@ return {
                     null_ls.builtins.diagnostics.eslint_d,
                     null_ls.builtins.formatting.prettierd,
                     null_ls.builtins.diagnostics.commitlint,
-                    null_ls.builtins.diagnostics.cspell,
+                    null_ls.builtins.diagnostics.cspell.with(
+                        {
+                            diagnostics_postprocess = function(diagnostic)
+                                diagnostic.severity = vim.diagnostic.severity["WARN"]
+                            end,
+                            condition = function()
+                                return vim.fn.executable("cspell") > 0
+                            end,
+                        }
+                    -- ,
+                    -- {
+                    --     extra_args = { "--config", "~/.cspell.json" },
+                    -- }
+                    ),
                     null_ls.builtins.code_actions.cspell,
                 },
 
