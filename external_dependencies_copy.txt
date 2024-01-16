@@ -1,0 +1,95 @@
+npm 
+     @cspell/dict-lt-lt@4.0.0 extraneous
+     @cspell/eslint-plugin@8.3.2
+     bootstrap@5.3.2
+     eslint-config-prettier@9.1.0
+     eslint@8.56.0
+     prettier@3.1.1 
+
+brew 
+    gh cli
+    curl
+    dart
+    lua-language-server
+    luajit
+    stylua
+    neovim
+    ripgrep
+    sass
+    tmux
+    tree-sitter
+
+
+DOTFILES
+
+.cspell.json
+{
+    "language": "en,lt",
+        "ignorePaths": ["**/.config/nvim/**"],
+        "version": "0.2",
+        "flagWords": [],
+        "words": ["nvim", "alacritty", "kepėjai", "trinitrotoluolas"]
+}
+
+  .eslint_d
+  
+  .eslintrc.json
+        {
+            "env": {
+                "browser": true,
+                    "es2021": true,
+                    "node": true
+            },
+                "extends": "eslint:recommended",
+                "parserOptions": {
+                    "ecmaVersion": "latest",
+                    "sourceType": "module"
+                },
+                "rules": {}
+
+.gitconfig
+    [user]
+      name = Paulius
+      email = paulius000@gmail.com
+      [init]
+      default = branch
+      [filter 'lfs']
+      smudge = git-lfs smudge -- %f
+      process = git-lfs filter-process
+      required = true
+      clean = git-lfs clean -- %f
+
+.npmrc 
+    "prefix=~/.npm-global"
+
+.tmuxconfig = ""
+
+.zsh_aliases
+    # NAVIGATIONAL ALIASES 
+    alias gallery="cd documents/learn\ to\ code/projects/sisters\ art\ gallery"
+    alias vcs="cd documents/learn\ to\ code/vilnius\ coding\ school" 
+    alias ltc="cd documents/learn\ to\ code"
+    alias advent="cd documents/learn\ to\ code/LeetCode/AdventJS"
+
+    # STRAIGHT TO FILE 
+    alias alacon="nvim .config/alacritty/alacritty.toml"
+    alias nvcon="nvim .config/nvim"
+
+    # SHORTCUT ALIASES
+    alias resize="mogrify -resize 800x800 -quality 100 *.jpg" 
+    alias server="live-server"
+
+    # WEBPAGE ALIASES
+    alias google="open https://www.google.lt"
+    alias tiny="open https://tinypng.com/"
+    alias keybr="open https://www.keybr.com/"
+
+.zshrc
+    source ~/.zsh_aliases
+
+    PROMPT='%F{75}%n%f %F{222}%2~%f: ' 
+    export PS1='%F{75}%n%f %F{222}%2~%f: ' 
+
+    export EDITOR=nvim
+
+    export PATH=$PATH:/Users/Paulius/.npm-global/bin

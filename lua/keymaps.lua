@@ -37,28 +37,28 @@ vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { noremap = true, silent = true
 
 -- split window resize
 vim.keymap.set(
-	"n",
-	"<leader><Right>",
-	":vertical resize +5<CR>",
-	{ noremap = true, silent = true, desc = "Increase window width" }
+    "n",
+    "<leader><Right>",
+    ":vertical resize +5<CR>",
+    { noremap = true, silent = true, desc = "Increase window width" }
 )
 vim.keymap.set(
-	"n",
-	"<leader><Left>",
-	":vertical resize -5<CR>",
-	{ noremap = true, silent = true, desc = "Decrease window width" }
+    "n",
+    "<leader><Left>",
+    ":vertical resize -5<CR>",
+    { noremap = true, silent = true, desc = "Decrease window width" }
 )
 vim.keymap.set(
-	"n",
-	"<leader><Up>",
-	":resize +5<CR>",
-	{ noremap = true, silent = true, desc = "Increase window height" }
+    "n",
+    "<leader><Up>",
+    ":resize +5<CR>",
+    { noremap = true, silent = true, desc = "Increase window height" }
 )
 vim.keymap.set(
-	"n",
-	"<leader><Down>",
-	":resize -5<CR>",
-	{ noremap = true, silent = true, desc = "Decrease window height" }
+    "n",
+    "<leader><Down>",
+    ":resize -5<CR>",
+    { noremap = true, silent = true, desc = "Decrease window height" }
 )
 
 -- split window navigation

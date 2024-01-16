@@ -59,12 +59,15 @@ vim.opt.termguicolors = true
 -- highlight on yank
 local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-    group = highlight_group,
-    pattern = "*",
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = "*",
 })
 
 -- spell-check
-vim.cmd("set spell spelllang=en_us,lt")
+-- vim.cmd("set spell spelllang=en_us,lt")
+
+-- tmux
+-- vim.opt.tmux_navigator_preserve_zoom = 1
