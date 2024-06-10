@@ -8,15 +8,22 @@ vim.g.mapleader = " "
 
 local keymapOptions = { noremap = true, silent = true }
 
--- Ctrl-s to save and indent the document
-vim.keymap.set("n", "<C-s>", "gg=G``zz:w<cr>", keymapOptions)
+-- Ctrl-s to save and format the document with Prettier
+vim.keymap.set("n", "<C-s>", ":Prettier<CR> :w<CR>", keymapOptions)
+
+-- Format the document with Prettier without saving
+vim.keymap.set("n", "<Leader>p", ":PrettierAsync<CR>", keymapOptions)
 
 -- Ctrl-q to  quit
-vim.keymap.set("n", "<C-q>", ":q<cr>", keymapOptions)
+vim.keymap.set("n", "<C-q>", ":q<CR>", keymapOptions)
 
 -- netrw
-vim.keymap.set("n", "<C-e>", ":Lexplore<cr>", keymapOptions)
-vim.keymap.set("n", "<Leader>e", ":Lexplore<cr>", keymapOptions)
+-- vim.keymap.set("n", "<C-e>", ":Lexplore<cr>", keymapOptions)
+-- vim.keymap.set("n", "<Leader>e", ":Lexplore<cr>", keymapOptions)
+
+-- neo-tree
+vim.keymap.set("n", "<C-e>", ":Neotree toggle<CR>", keymapOptions)
+
 
 -- split window
 vim.keymap.set("n", "<leader>sp", ":split<CR>", keymapOptions)
@@ -272,7 +279,141 @@ require("lazy").setup({
         }
       }
     end,
-  }
+  },
+  -- }}}
+
+  -- {{{ vim-prettier
+  -- A vim plugin wrapper for Prettier
+
+  {
+    "prettier/vim-prettier",
+    config = function()
+    	vim.g["prettier#config#config_precedence"] = "prefer-file"
+
+      vim.g["prettier#config#arrow_parens"] = "always"
+      vim.g["prettier#config#bracket_spacing"] = "false"
+      vim.g["prettier#config#bracket_same_line"] = "true"
+      vim.g["prettier#config#end_of_line"] = "lf"
+      vim.g["prettier#config#html_whitespace_sensitivity"] = "css"
+      vim.g["prettier#config#jsx_bracket_same_line"] = "true"
+      vim.g["prettier#config#jsx_single_quote"] = "false"
+      vim.g["prettier#config#print_width"] = "80"
+      vim.g["prettier#config#prose_wrap"] = "preserve"
+      vim.g["prettier#config#semi"] = "true"
+      vim.g["prettier#config#single_attribute_per_line"] = "false"
+      vim.g["prettier#config#single_quote"] = "false"
+      vim.g["prettier#config#tab_width"] = "2"
+      vim.g["prettier#config#trailing_comma"] = "es5"
+      vim.g["prettier#config#use_tabs"] = "false"
+    end 
+  },
+  -- }}}
+  
+-- {{{ vim-cspell
+-- Checks spelling by using cspell for Vim/Neovim
+
+  {
+    "ryu-ichiroh/vim-cspell",
+
+    config = function()
+        vim.g.cspell_ext = {
+          ".txt", ".js", ".ts", ".jsx", ".tsx", ".html", ".css", "scss", ".md", ".json"
+        }
+        vim.g.cspell_config_file = vim.fn.expand('~/.cspell.json')
+
+    end
+  },
+  -- }}}
+
+-- {{{ neo-tree.nvim
+-- Plugin to browse the file system and other tree like structures
+
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons",
+        "MunifTanjim/nui.nvim",
+    },
+    config = function()
+        require("neo-tree").setup({
+            window = {
+                width = 40,
+                mappings = {
+                    ["z"] = "close_all_nodes",
+                    ["Z"] = "expand_all_nodes",
+                    ["s"] = "open_vsplit",
+                    ["S"] = "open_split",
+                    ["."] = "set_root",
+                    ["H"] = "toggle_hidden",
+                },
+            },
+            filesystem = {
+                filtered_items = {
+                    visible = false,
+                    hide_dotfiles = true,
+                    hide_gitignored = true,
+                    hide_hidden = true,
+                    hide_by_name = {
+                        "undo",
+                    },
+                },
+            },
+        })
+    end
+  },
+  -- }}}
+
+  -- {{{ lualine.nvim
+    -- A blazing fast and easy to configure Neovim statusline written in Lua
+
+    {
+      'nvim-lualine/lualine.nvim',
+      dependencies = { 'nvim-tree/nvim-web-devicons' },
+      config = function()
+        require('lualine').setup {
+          options = {
+            icons_enabled = true,
+            theme = 'auto',
+            component_separators = { left = '', right = ''},
+            section_separators = { left = '', right = ''},
+            disabled_filetypes = {
+              statusline = {},
+              winbar = {},
+            },
+            ignore_focus = {},
+            always_divide_middle = true,
+            globalstatus = false,
+            refresh = {
+              statusline = 1000,
+              tabline = 1000,
+              winbar = 1000,
+            }
+          },
+          sections = {
+            lualine_a = {'mode'},
+            lualine_b = {'branch', 'diff', 'diagnostics'},
+            lualine_c = {'filename'},
+            lualine_x = {'encoding', 'fileformat', 'filetype'},
+            lualine_y = {'progress'},
+            lualine_z = {'location'}
+          },
+          inactive_sections = {
+            lualine_a = {},
+            lualine_b = {},
+            lualine_c = {'filename'},
+            lualine_x = {'location'},
+            lualine_y = {},
+            lualine_z = {}
+          },
+          tabline = {},
+          winbar = {},
+          inactive_winbar = {},
+          extensions = {}
+        }
+      end
+      }
   -- }}}
 
 }, opts)
